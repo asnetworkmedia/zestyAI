@@ -7,11 +7,11 @@ features completed. Quality is preferred over quantity. Design, organize, and co
 production project. Be prepared to discuss decisions you made.
 
 ## Technologies Used
-  "Frontend": 
+  Frontend: 
       Vue.js CLI
       Tailwind CSS
 
-  "Backend": 
+  Backend: 
     Use Node.js
     Express.js
     Sequelize.js            # ORM 
