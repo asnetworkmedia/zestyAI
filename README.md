@@ -172,6 +172,7 @@ This builds and runs three services: `postgres` (db), `api` (Express/Sequelize),
 - `POST /find` — body: GeoJSON Point + `x-distance` meters → returns array of IDs
 - `GET /display/:id?overlay=yes&parcel=orange&building=green` — returns JPEG (with optional overlays)
 - `GET /docs` — Swagger UI
+- `GET /health` - API health check endpoint
 
 ## Testing
 
