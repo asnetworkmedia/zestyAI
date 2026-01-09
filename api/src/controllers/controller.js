@@ -169,7 +169,7 @@ const controller = {
 	displayProperty: async (req, res) => {
 		try {
 			const { id } = req.params;
-			if (!id) return res.status(400).json({ message: 'Property id is required' });
+			if (!id) throw Error('Property id is required');
 
 			const [property] = await sequelize.query(
 				`${geoSelect} WHERE id = :id LIMIT 1`,
@@ -177,7 +177,7 @@ const controller = {
 			);
 
 			if (!property) {
-				return res.status(404).json({ message: 'Property not found' });
+				throw Error('Property not found');
 			}
 
 			const overlayEnabled = (req.query.overlay || '').toLowerCase() === 'yes';
