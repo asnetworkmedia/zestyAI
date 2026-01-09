@@ -20,9 +20,7 @@
 						Docs</a>
 					<a class="hover:text-amber-300 transition" href="http://localhost:1235/health"
 						target="_blank">Health Check</a>
-					<span class="text-sm" :class="status ? 'text-green-400' : 'text-red-400'">
-						● {{ status ? 'API Online' : 'API Offline' }}
-					</span>
+					<span class="text-sm" :class="status ? 'text-green-400' : 'text-red-400'">●</span>
 				</nav>
 			</div>
 		</header>
