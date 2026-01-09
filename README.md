@@ -25,14 +25,16 @@ project-root/
 |-- app/                          # Frontend
 |   |-- package.json
 |   |-- src/
-|       |-- index.js              # Starting file of the app
+|       |--api/                   # Contains modules to handle api interactions
+|         |-- client.js           # To Handle API endpoint requests
+|       |-- main.js               # Starting file of the app
 |       |-- components/           # Contains shared components in all pages
 |       |-- pages/
-|           |-- listing/          # Contains listing page and search
-|               |-- Listing.vue
+|           |-- listing/          # Contains Listing page and search
+|               |-- Listing.vue   # Listing page
 |               |-- components/   # Contains components used in Listing.vue
-|           |-- property/
-|               |-- Property.vue
+|           |-- property/         # Contains Property page
+|               |-- Property.vue  # To Show a Property
 |               |-- components/   # Contains components used in Property.vue
 |
 |-- api/                          # Backend
