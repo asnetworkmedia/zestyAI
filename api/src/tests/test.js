@@ -26,11 +26,10 @@ test('POST /find returns property IDs nearby a point', async () => {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [-80.0782213, 26.8849731]
+        coordinates: [-73.748751, 40.918548]
       },
       'x-distance': 2000
     });
-
   expect(res.status).toBe(200);
   expect(Array.isArray(res.body)).toBe(true);
 });

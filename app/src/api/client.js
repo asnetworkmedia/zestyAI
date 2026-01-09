@@ -17,7 +17,7 @@ export const fetchPropertyById = async (id) => {
 };
 
 export const searchByCoordinates = async (payload) => {
-  const { data } = await api.post('/properties/find', payload);
+  const { data } = await api.post('/find', payload);
   return data;
 };
 

@@ -65,7 +65,7 @@ router.get('/properties/:id', controller.getPropertyById);
  *       400:
  *         description: Invalid search criteria
  */
-router.post('/properties/find', controller.findProperties);
+router.post('/find', controller.findProperties);
 
 /**
  * @swagger
