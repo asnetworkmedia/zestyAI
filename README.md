@@ -22,33 +22,33 @@ production project. Be prepared to discuss decisions you made.
 
 ```plaintext
 project-root/
-|-- app/                        # Frontend
+|-- app/                          # Frontend
 |   |-- package.json
 |   |-- src/
 |       |-- index.js              # Starting file of the app
 |       |-- components/           # Contains shared components in all pages
 |       |-- pages/
-|           |-- listing/         # Contains listing page and search
+|           |-- listing/          # Contains listing page and search
 |               |-- Listing.vue
-|               |-- components/    # Contains components used in Listing.vue
+|               |-- components/   # Contains components used in Listing.vue
 |           |-- property/
 |               |-- Property.vue
-|               |-- components/    # Contains components used in Property.vue
+|               |-- components/   # Contains components used in Property.vue
 |
-|-- api/                        # Backend
-|   |-- src/                    # Contains service files
-|       |-- controllers/         # Contains service modules and classes
-|           |-- controller.js      # To handle API endpoint requests
-|           |-- db.js              # To handle Sequelize connection
-|       |-- models/              # Contains Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
+|-- api/                          # Backend
+|   |-- src/                      # Contains service files
+|       |-- controllers/          # Contains service modules and classes
+|           |-- controller.js     # To handle API endpoint requests
+|           |-- db.js             # To handle Sequelize connection
+|       |-- models/               # Contains Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
 |       |-- tests/
 |           |-- test.js           # "Testing endpoints"
-|   |-- route.js                 # API route setup
-|   |-- index.js                 # Starting file for the API service
+|   |-- route.js                  # API route setup
+|   |-- index.js                  # Starting file for the API service
 |-- package.json                 
-|-- README.md                   # Project documentation
-|-- LICENSE                     # Project License
-|-- Changelog.md                # Change history
+|-- README.md                     # Project documentation
+|-- LICENSE                       # Project License
+|-- Changelog.md                  # Change history
 ```
 
 
