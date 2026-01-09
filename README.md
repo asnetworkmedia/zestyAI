@@ -143,11 +143,6 @@ JSON array of property IDs
 ##### Response
 JPEG image
 
-## API Testing script
-
-Write scripts for testing endpoints using Jest.js
-Run test each time before starting the service
-
 ---
 
 ## Getting Started (local)
