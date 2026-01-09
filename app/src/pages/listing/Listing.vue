@@ -47,7 +47,8 @@
 			<button v-if="highlightedIds" class="text-amber-300 hover:underline" @click="clearSearch">Clear filter</button>
 		</div>
 
-		<PropertyTable :items="visualProperties" :highlight-ids="highlightedIds" />
+		<div v-if="loading" class="text-center text-slate-400">Loading properties...</div>
+		<PropertyTable v-else :items="visualProperties" :highlight-ids="highlightedIds" />
 
 		<Alert 
 			v-if="showAlert"
