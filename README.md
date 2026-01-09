@@ -42,7 +42,7 @@ project-root/
 |           |-- db.js             # To handle Sequelize connection
 |       |-- models/               # Contains Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
 |       |-- tests/
-|           |-- test.js           # "Testing endpoints"
+|           |-- test.js           # Testing endpoints
 |   |-- route.js                  # API route setup
 |   |-- index.js                  # Starting file for the API service
 |-- package.json                 
@@ -171,7 +171,7 @@ This builds and runs three services: `postgres` (db), `api` (Express/Sequelize),
 ## API Endpoints
 
 - `GET /properties` — list all properties with geojson data
-- `GET /properties/:id` - Get a single property with geojson data
+- `GET /properties/:id` - Get a single property with geojson data by ID
 - `POST /find` — body: GeoJSON Point + `x-distance` meters → returns array of IDs
 - `GET /display/:id?overlay=yes&parcel=orange&building=green` — returns JPEG (with optional overlays)
 - `GET /docs` — Swagger UI
