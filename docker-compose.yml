@@ -29,7 +29,7 @@ services:
   app:
     build: ./app
     environment:
-      VUE_APP_API_BASE_URL: http://api:1235
+      VUE_APP_API_BASE_URL: http://localhost:1235
     depends_on:
       - api
     ports:
