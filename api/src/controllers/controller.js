@@ -112,6 +112,7 @@ const controller = {
 		}
 	},
 
+	// Fetch a single property by id
 	getPropertyById: async (req, res) => {
 		try {
 			const { id } = req.params;
@@ -195,6 +196,7 @@ const controller = {
 			res.send(imageBuffer);
 		} catch (error) {
 			console.error(error);
+			// On error, return a placeholder image
 			const baseImage = await controller.fetchBaseImage('https://placehold.co/600x400?text=Error+Loading+Image');
 			const jpegBuffer = await sharp(baseImage).jpeg().toBuffer();
 			res.set('Content-Type', 'image/jpeg');
