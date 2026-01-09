@@ -54,7 +54,7 @@
 			<button v-if="highlightedIds" class="text-amber-300 hover:underline" @click="clearSearch">Clear filter</button>
 		</div>
 
-		<PropertyTable :items="properties" :highlight-ids="highlightedIds" />
+		<PropertyTable :items="visualProperties" :highlight-ids="highlightedIds" />
 
 		<Alert 
 			v-if="showAlert"
@@ -89,6 +89,12 @@ export default {
 		};
 	},
 	computed: {
+		visualProperties() {
+			if (this.highlightedIds) {
+				return this.properties.filter(p => this.highlightedIds.has(p.id));
+			}
+			return this.properties;
+		},
 		polygonCount() {
 			return this.properties.reduce((count, p) => {
 				const parcelRings = p.parcel_geo?.coordinates?.length || 0;

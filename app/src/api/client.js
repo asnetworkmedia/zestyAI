@@ -21,6 +21,11 @@ export const searchByCoordinates = async (payload) => {
   return data;
 };
 
+export const fetchHealth = async () => {
+  const { data } = await api.get('/health');
+  return data?.status === 'ok';
+}
+
 export const buildImageUrl = (id, { overlay = false, parcel = 'orange', building = 'green' } = {}) => {
   const url = new URL(`${baseURL}/display/${id}`);
   if (overlay) {
