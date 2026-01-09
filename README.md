@@ -16,7 +16,7 @@ production project. Be prepared to discuss decisions you made.
     Express.js
     Sequelize.js            # ORM 
     Swagger.js              # API documentation
-    Jest.js                 # api endpoint test scripts
+    Jest.js                 # api endpoint test
  
 ## Project Structure
 
