@@ -12,7 +12,7 @@ production project. Be prepared to discuss decisions you made.
       Tailwind CSS
 
   Backend: 
-    Use Node.js
+    Node.js ver >= 20.0
     Express.js
     Sequelize.js            # ORM 
     Swagger.js              # API documentation
