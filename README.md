@@ -20,28 +20,28 @@ production project. Be prepared to discuss decisions you made.
  
 ## Project Structure
 
-project-root
-|--app                        # Frontend
+project-root/
+|--app/                        # Frontend
 |  |-- packages.json
-|  |-- src
+|  |-- src/
 |    |-- index.js             # Staring file of the app
-|    |-- components           # Contain shared Components in all pages
-|    |-- pages
-|       |-- listing           # Contain listing page and search
+|    |-- components/           # Contain shared Components in all pages
+|    |-- pages/
+|       |-- listing/           # Contain listing page and search
 |         |-- Listing.vue
-|         |-- components      # Contain components used in Listing.vue
-|       |- property
+|         |-- components/      # Contain components used in Listing.vue
+|       |- property/
 |         |-- Property.vue
-|         |-- components      # Contain components used in Property.vue
+|         |-- components/      # Contain components used in Property.vue
 |
 |
-|--api                        # Backend
-|  |-- src                    # Contains service files
-|     |-- controllers         # Contains service modules and classes
+|--api/                        # Backend
+|  |-- src/                    # Contains service files
+|     |-- controllers/         # Contains service modules and classes
 |       |-- controller.js     # to handle API endpoint request
 |       |-- db.js             # to handle Sequelize connection
-|     |-- models              # Contain Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
-|     |-- tests
+|     |-- models/              # Contain Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
+|     |-- tests/
 |       |-- test.js           # "Testing endpoints"
 |   -- route.js               # API route setup
 |   -- index.js               # starting file the API service
