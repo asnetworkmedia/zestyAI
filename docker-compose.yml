@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  postgres:
+    image: mdillon/postgis:9.6
+    restart: always
+    ports:
+      - "5555:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: engineTest888
+      POSTGRES_DB: zesty
+    volumes:
+      - ./init-db/:/docker-entrypoint-initdb.d/
+      - pg-data:/var/lib/postgresql/data
+  api:
+    build: ./api
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: engineTest888
+      DB_NAME: zesty
+      PORT: 1235
+    ports:
+      - "1235:1235"
+  app:
+    build: ./app
+    environment:
+      VUE_APP_API_BASE_URL: http://api:1235
+    depends_on:
+      - api
+    ports:
+      - "8080:8080"
+volumes:
+  pg-data:

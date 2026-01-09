@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-amber: #f6c344;
+  --brand-green: #3bc9a0;
+  --brand-dark: #0b1021;
+}
+
+body {
+  background: radial-gradient(circle at 10% 20%, rgba(59, 201, 160, 0.08), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(246, 195, 68, 0.08), transparent 26%),
+    radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.04), transparent 30%),
+    #0b1021;
+  color: #e5e7eb;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a {
+  color: inherit;
+}
