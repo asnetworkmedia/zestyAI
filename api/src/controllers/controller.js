@@ -3,9 +3,11 @@ const sharp = require('sharp');
 const { QueryTypes } = require('sequelize');
 const sequelize = require('./db');
 
+// Default colors for overlays
 const PARCEL_DEFAULT_COLOR = 'orange';
 const BUILDING_DEFAULT_COLOR = 'green';
 
+// SQL query to select geographic data from properties table
 const geoSelect = `
   SELECT id,
          ST_AsGeoJSON(geocode_geo)::json AS geocode_geo,
@@ -49,6 +51,7 @@ const controller = {
 		const parcelPolygons = controller.polygonsFromGeometry(parcelGeo);
 		const buildingPolygons = controller.polygonsFromGeometry(buildingGeo);
 
+		// Draw parcel polygons
 		parcelPolygons.forEach((polygon, idx) => {
 			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
@@ -57,6 +60,7 @@ const controller = {
 			}
 		});
 
+		// Draw building polygons
 		buildingPolygons.forEach((polygon, idx) => {
 			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
@@ -83,6 +87,7 @@ const controller = {
 		const width = meta.width || 1024;
 		const height = meta.height || 1024;
 
+		// Build SVG overlay
 		const svg = controller.buildOverlaySvg(parcelGeo, buildingGeo, parcelColor, buildingColor, bounds, width, height);
 		if (!svg) {
 			return image.jpeg().toBuffer();
@@ -106,6 +111,9 @@ const controller = {
 			const properties = await sequelize.query(geoSelect, {
 				type: QueryTypes.SELECT
 			});
+			if (!properties || !properties.length) {
+				return res.status(404).json({ message: 'No properties found' });
+			}
 			res.json(properties);
 		} catch (error) {
 			res.status(500).json({ message: 'Failed to fetch properties', error: error.message });
@@ -176,6 +184,7 @@ const controller = {
 			const parcelColor = req.query.parcel || PARCEL_DEFAULT_COLOR;
 			const buildingColor = req.query.building || BUILDING_DEFAULT_COLOR;
 
+			// Fetch base image
 			const baseImage = await controller.fetchBaseImage(property.image_url);
 
 			if (!overlayEnabled) {
@@ -184,6 +193,7 @@ const controller = {
 				return res.send(jpegBuffer);
 			}
 
+			// Apply overlays
 			const imageBuffer = await controller.withOverlay(baseImage, {
 				parcelGeo: property.parcel_geo,
 				buildingGeo: property.building_geo,
