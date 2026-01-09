@@ -16,7 +16,7 @@
           <RouterLink class="hover:text-amber-300 transition" to="/property/f853874999424ad2a5b6f37af6b56610">
             Sample Property
           </RouterLink>
-          <a class="hover:text-amber-300 transition" href="/docs" target="_blank">API Docs</a>
+          <a class="hover:text-amber-300 transition" href="http://localhost:1235/docs" target="_blank">API Docs</a>
         </nav>
       </div>
     </header>

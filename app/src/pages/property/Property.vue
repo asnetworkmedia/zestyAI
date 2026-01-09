@@ -19,7 +19,6 @@
 					<div class="flex items-center justify-between px-5 py-3 border-b border-white/10">
 						<div>
 							<p class="text-sm font-semibold text-white">Imagery</p>
-							<p class="text-xs text-slate-300">Fetched from the API /display endpoint.</p>
 						</div>
 						<span
 							class="text-xs bg-emerald-500/20 text-emerald-200 px-3 py-1 rounded-full border border-emerald-400/40">
@@ -27,7 +26,10 @@
 						</span>
 					</div>
 					<div class="relative bg-slate-900">
-						{{ imageUrl() }}
+						<h3 v-if="loading"
+							class="absolute inset-0 flex items-center justify-center text-slate-500 text-sm font-medium">
+							Loading imagery...
+						</h3>
 						<img :src="imageUrl()" class="w-full object-contain max-h-[70vh]"
 							alt="Property imagery" />
 					</div>
@@ -45,13 +47,22 @@
 		<p class="text-2xl font-semibold">Property not found</p>
 		<RouterLink class="text-amber-300 hover:underline" to="/">Go back to listing</RouterLink>
 	</section>
+
+	<Alert 
+		v-if="showAlert"
+		title="Error" 
+		message="Failed to load property data. Please try again later."
+		@close="showAlert = false"
+	/>
 </template>
 
 <script>
 import { ref } from 'vue';
 import { buildImageUrl, fetchPropertyById } from '../../api/client';
+
 import OverlayControls from './components/OverlayControls.vue';
 import MetaTable from './components/MetaTable.vue';
+import Alert from '../../components/Alert.vue';
 
 const property = ref(null);
 const overlay = ref(true);
@@ -62,17 +73,21 @@ export default {
 	name: 'PropertyPage',
 	components: {
 		OverlayControls,
-		MetaTable
+		MetaTable,
+		Alert
 	},
 	watch: {
 		'$route.params.id': 'load'
 	},
 	data() {
 		return {
+			loading: false,
 			property: null,
 			overlay: true,
 			parcelColor: 'orange',
-			buildingColor: 'green'
+			buildingColor: 'green',
+
+			showAlert: false
 		};
 	},
 	mounted() {
@@ -88,8 +103,17 @@ export default {
 			});
 		},
 		async load() {
-			const data = await fetchPropertyById(this.$route.params.id);
-			this.property = data;
+			try {
+				this.loading = true;
+				this.showAlert = false;
+				const data = await fetchPropertyById(this.$route.params.id);
+				this.property = data;
+			} catch (error) {
+				this.showAlert = true;
+				this.property = null;
+			} finally {
+				this.loading = false;
+			}
 		}
 	}
 };

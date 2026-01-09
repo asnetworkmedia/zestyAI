@@ -50,7 +50,7 @@ const controller = {
 		const buildingPolygons = controller.polygonsFromGeometry(buildingGeo);
 
 		parcelPolygons.forEach((polygon, idx) => {
-			const points = (polygon[0] || []).map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
+			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
 				const formatted = points.map(([x, y]) => `${x},${y}`).join(' ');
 				parts.push(`<polygon points="${formatted}" fill="none" stroke="${parcelColor}" stroke-width="3" stroke-opacity="0.8" id="parcel-${idx}"/>`);
@@ -58,7 +58,7 @@ const controller = {
 		});
 
 		buildingPolygons.forEach((polygon, idx) => {
-			const points = (polygon[0] || []).map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
+			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
 				const formatted = points.map(([x, y]) => `${x},${y}`).join(' ');
 				parts.push(`<polygon points="${formatted}" fill="none" stroke="${buildingColor}" stroke-width="3" stroke-opacity="0.8" id="building-${idx}"/>`);
