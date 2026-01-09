@@ -8,7 +8,7 @@ const api = axios.create({
   baseURL
 });
 
-// API functions
+// Fetch all properties
 export const fetchProperties = async () => {
   const { data } = await api.get('/properties');
   return data;
