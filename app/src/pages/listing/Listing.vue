@@ -11,13 +11,6 @@
 					overlays for each
 					property.
 				</p>
-				<div class="flex gap-3 text-sm text-slate-200">
-					<span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30">GET /properties</span>
-					<span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30">GET /properties/:id</span>
-					<span class="px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/40">POST /properties/find</span>
-					<span class="px-3 py-1 rounded-full bg-blue-400/20 border border-blue-300/40">GET /display/:id</span>
-					<span class="px-3 py-1 rounded-full bg-blue-400/20 border border-blue-300/40">GET /docs</span>
-				</div>
 			</div>
 			<div class="relative">
 				<div class="absolute inset-0 blur-3xl bg-emerald-400/20 rounded-full"></div>

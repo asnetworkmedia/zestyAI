@@ -26,10 +26,6 @@
 						</span>
 					</div>
 					<div class="relative bg-slate-900">
-						<h3 v-if="loading"
-							class="absolute inset-0 flex items-center justify-center text-slate-500 text-sm font-medium">
-							Loading imagery...
-						</h3>
 						<img :src="imageUrl()" class="w-full object-contain max-h-[70vh]"
 							alt="Property imagery" />
 					</div>
@@ -57,17 +53,11 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 import { buildImageUrl, fetchPropertyById } from '../../api/client';
 
 import OverlayControls from './components/OverlayControls.vue';
 import MetaTable from './components/MetaTable.vue';
 import Alert from '../../components/Alert.vue';
-
-const property = ref(null);
-const overlay = ref(true);
-const parcelColor = ref('orange');
-const buildingColor = ref('green');
 
 export default {
 	name: 'PropertyPage',
@@ -81,7 +71,6 @@ export default {
 	},
 	data() {
 		return {
-			loading: false,
 			property: null,
 			overlay: true,
 			parcelColor: 'orange',
@@ -104,15 +93,12 @@ export default {
 		},
 		async load() {
 			try {
-				this.loading = true;
 				this.showAlert = false;
 				const data = await fetchPropertyById(this.$route.params.id);
 				this.property = data;
 			} catch (error) {
 				this.showAlert = true;
 				this.property = null;
-			} finally {
-				this.loading = false;
 			}
 		}
 	}
