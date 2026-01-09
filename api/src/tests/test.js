@@ -12,6 +12,13 @@ test('GET /properties returns a list of properties', async () => {
   expect(Array.isArray(res.body)).toBe(true);
 });
 
+test('GET /properties/:id returns a property by ID', async () => {
+  const sampleId = 'f853874999424ad2a5b6f37af6b56610';
+  const res = await request(app).get(`/properties/${sampleId}`);
+  expect(res.status).toBe(200);
+  expect(res.body).toHaveProperty('id', sampleId);
+});
+
 test('POST /find returns property IDs nearby a point', async () => {
   const res = await request(app)
     .post('/find')
@@ -19,11 +26,10 @@ test('POST /find returns property IDs nearby a point', async () => {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [-80.0782213, 26.8849731]
+        coordinates: [-73.748751, 40.918548]
       },
       'x-distance': 2000
     });
-
   expect(res.status).toBe(200);
   expect(Array.isArray(res.body)).toBe(true);
 });

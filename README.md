@@ -170,6 +170,7 @@ This builds and runs three services: `postgres` (db), `api` (Express/Sequelize),
 ## API Endpoints
 
 - `GET /properties` — list all properties with geojson data
+- `GET /properties/:id` - Get a single property with geojson data
 - `POST /find` — body: GeoJSON Point + `x-distance` meters → returns array of IDs
 - `GET /display/:id?overlay=yes&parcel=orange&building=green` — returns JPEG (with optional overlays)
 - `GET /docs` — Swagger UI
