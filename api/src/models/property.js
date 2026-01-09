@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../controllers/db');
 
+// Define the Property model - I didn't use it but eventually might be useful
 const Property = sequelize.define(
   'Property',
   {

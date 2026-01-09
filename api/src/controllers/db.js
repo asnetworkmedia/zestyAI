@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+// Initialize Sequelize with PostgreSQL connection parameters
 const sequelize = new Sequelize(
   process.env.DB_NAME || 'zesty',
   process.env.DB_USER || 'postgres',

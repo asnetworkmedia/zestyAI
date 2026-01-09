@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Swagger setup
 const swaggerSpec = swaggerJsdoc({
   definition: {
     openapi: '3.0.0',
@@ -28,13 +29,17 @@ const swaggerSpec = swaggerJsdoc({
   apis: ['./src/route.js', './src/controllers/controller.js']
 });
 
+// Serve Swagger docs
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/', router);
 
+// Health check endpoint
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
+// Initialize server port
 const port = process.env.PORT || 1235;
 
+// Start the server only if not in test environment
 if (process.env.NODE_ENV !== 'test') {
   sequelize
     .authenticate()
