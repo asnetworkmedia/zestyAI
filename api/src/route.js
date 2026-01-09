@@ -47,7 +47,7 @@ router.get('/properties/:id', controller.getPropertyById);
 
 /**
  * @swagger
- * /properties/find:
+ * /find:
  *   post:
  *     summary: Find properties
  *     description: Search for properties based on criteria
