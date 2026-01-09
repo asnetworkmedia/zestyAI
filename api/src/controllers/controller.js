@@ -187,6 +187,7 @@ const controller = {
 			// Fetch base image
 			const baseImage = await controller.fetchBaseImage(property.image_url);
 
+			// If overlays are not enabled, return base image directly
 			if (!overlayEnabled) {
 				const jpegBuffer = await sharp(baseImage).jpeg().toBuffer();
 				res.set('Content-Type', 'image/jpeg');
