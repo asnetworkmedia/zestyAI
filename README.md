@@ -6,8 +6,10 @@ Note that some features are more difficult than others, and you will be evaluate
 features completed. Quality is preferred over quantity. Design, organize, and comment your code as you would a typical 
 production project. Be prepared to discuss decisions you made.
 
-```plaintext
+
 ## Technologies Used
+
+```plaintext
   Frontend: 
       Vue.js CLI
       Tailwind CSS
