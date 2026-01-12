@@ -80,7 +80,7 @@ router.get('/properties', controller.getProperties);
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: The property ID
  *     responses:
  *       200:
