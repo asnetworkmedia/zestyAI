@@ -192,6 +192,11 @@ router.post('/find', controller.findProperties);
  *     responses:
  *       200:
  *         description: Property display data
+ *         content:
+ *           image/jpeg:
+ *             schema:
+ *               type: string
+ *               format: binary
  *       404:
  *         description: Property not found
  */
