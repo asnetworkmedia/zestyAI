@@ -48,13 +48,16 @@ const controller = {
 	// Build SVG overlay from parcel and building geometries
 	buildOverlaySvg: (parcelGeo, buildingGeo, parcelColor, buildingColor, bounds, width, height) => {
 		const parts = [];
+		// Extract polygons
 		const parcelPolygons = controller.polygonsFromGeometry(parcelGeo);
+		// Extract building polygons
 		const buildingPolygons = controller.polygonsFromGeometry(buildingGeo);
 
 		// Draw parcel polygons
 		parcelPolygons.forEach((polygon, idx) => {
 			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
+				// Convert points to SVG format
 				const formatted = points.map(([x, y]) => `${x},${y}`).join(' ');
 				parts.push(`<polygon points="${formatted}" fill="none" stroke="${parcelColor}" stroke-width="3" stroke-opacity="0.8" id="parcel-${idx}"/>`);
 			}
@@ -62,8 +65,10 @@ const controller = {
 
 		// Draw building polygons
 		buildingPolygons.forEach((polygon, idx) => {
+			// Map coordinates to pixel points
 			const points = polygon.map(([lon, lat]) => controller.mapCoordinateToPixel(lon, lat, bounds, width, height));
 			if (points.length) {
+				// Format points for SVG
 				const formatted = points.map(([x, y]) => `${x},${y}`).join(' ');
 				parts.push(`<polygon points="${formatted}" fill="none" stroke="${buildingColor}" stroke-width="3" stroke-opacity="0.8" id="building-${idx}"/>`);
 			}
@@ -93,6 +98,7 @@ const controller = {
 			return image.jpeg().toBuffer();
 		}
 
+		// Overlay SVG on image and return the result
 		return image
 			.composite([
 				{
@@ -108,6 +114,7 @@ const controller = {
 	// Fetch all properties
 	getProperties: async (req, res) => {
 		try {
+			// Fetch properties from database
 			const properties = await sequelize.query(geoSelect, {
 				type: QueryTypes.SELECT
 			});
@@ -126,6 +133,7 @@ const controller = {
 			const { id } = req.params;
 			if (!id) return res.status(400).json({ message: 'Property id is required' });
 
+			// Fetch property from database
 			const [property] = await sequelize.query(
 				`${geoSelect} WHERE id = :id LIMIT 1`,
 				{ replacements: { id }, type: QueryTypes.SELECT }
@@ -151,6 +159,7 @@ const controller = {
 			const distance = Number(xDistance) || 10000;
 			const geometryJson = JSON.stringify(geometry);
 
+			// Execute spatial query to find nearby properties
 			const ids = await sequelize.query(
 				`SELECT id FROM properties WHERE ST_DWithin(geocode_geo, ST_SetSRID(ST_GeomFromGeoJSON(:geometry), 4326)::geography, :distance)`,
 				{
@@ -171,6 +180,7 @@ const controller = {
 			const { id } = req.params;
 			if (!id) throw Error('Property id is required');
 
+			// Fetch property from database
 			const [property] = await sequelize.query(
 				`${geoSelect} WHERE id = :id LIMIT 1`,
 				{ replacements: { id }, type: QueryTypes.SELECT }
@@ -180,6 +190,7 @@ const controller = {
 				throw Error('Property not found');
 			}
 
+			// Determine overlay options
 			const overlayEnabled = (req.query.overlay || '').toLowerCase() === 'yes';
 			const parcelColor = req.query.parcel || PARCEL_DEFAULT_COLOR;
 			const buildingColor = req.query.building || BUILDING_DEFAULT_COLOR;

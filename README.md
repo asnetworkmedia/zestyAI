@@ -28,9 +28,9 @@ production project. Be prepared to discuss decisions you made.
 project-root/
 |-- app/                          # Frontend
 |   |-- package.json
-|   |-- src/
+|   |-- src/                      # Contains service files and folders
 |       |--api/                   # Contains modules to handle api interactions
-|         |-- client.js           # To Handle API endpoint requests
+|         |-- client.js           # Handles API endpoint requests
 |       |-- main.js               # Starting file of the app
 |       |-- components/           # Contains shared components in all pages
 |       |-- pages/
@@ -42,10 +42,10 @@ project-root/
 |               |-- components/   # Contains components used in Property.vue
 |
 |-- api/                          # Backend
-|   |-- src/                      # Contains service files
-|       |-- controllers/          # Contains service modules and classes
-|           |-- controller.js     # To handle API endpoint requests
-|           |-- db.js             # To handle Sequelize connection
+|   |-- src/                      # Contains service files and folders
+|       |-- controllers/          # Contains service modules and endpoints controllers
+|           |-- controller.js     # Handles API endpoint requests
+|           |-- db.js             # Handles Sequelize DB connection
 |       |-- models/               # Contains Sequelize model and schema. Use init-db/01-setup.sql file in this folder to create Sequelize model and schema
 |       |-- tests/
 |           |-- test.js           # Testing endpoints
