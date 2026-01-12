@@ -19,6 +19,51 @@ const controller = require('./controllers/controller');
  *               type: array
  *               items:
  *                 type: object
+ *                 example: [
+ *                   {
+ *                     "id": "<string>",
+ *                     "geocode_geo": {
+ *                       "type": "<string>",
+ *                       "coordinates": [
+ *                         <longitude>,
+ *                         <latitude>
+ *                       ]
+ *                     },
+ *                     "parcel_geo": {
+ *                       "type": "<string>",
+ *                       "coordinates": [
+ *                         [
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>]
+ *                         ]
+ *                       ]
+ *                     },
+ *                     "building_geo": {
+ *                       "type": "<string>",
+ *                       "coordinates": [
+ *                         [
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>],
+ *                           [<longitude>, <latitude>]
+ *                         ]
+ *                       ]
+ *                     },
+ *                     "image_bounds": [
+ *                       <longitude>,
+ *                       <latitude>,
+ *                       <longitude>,
+ *                       <latitude>
+ *                     ],
+ *                     "image_url": "<string>"
+ *                   }
+ *                 ]
  */
 router.get('/properties', controller.getProperties);
 
@@ -59,6 +104,14 @@ router.get('/properties/:id', controller.getPropertyById);
  *         application/json:
  *           schema:
  *             type: object
+ *             example: {
+ *               "type": "Feature",
+ *               "geometry": {
+ *                 "type": "Point",
+ *                 "coordinates": [-80.0782213, 26.8849731]
+ *               },
+ *               "x-distance": 1755000
+ *             }
  *     responses:
  *       200:
  *         description: Search results
