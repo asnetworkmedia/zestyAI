@@ -48,7 +48,7 @@ project-root/
 |   |-- route.js                  # API route setup
 |   |-- index.js                  # Starting file for the API service
 |-- package.json                 
-|-- docker-compose.yml            # Main Docker Compose to run the app and backend in a single container
+|-- docker-compose.yml            # Main Docker Compose to generate and run the app
 |-- README.md                     # Project documentation
 |-- LICENSE                       # Project License
 |-- Changelog.md                  # Change history
