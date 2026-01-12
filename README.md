@@ -6,6 +6,7 @@ Note that some features are more difficult than others, and you will be evaluate
 features completed. Quality is preferred over quantity. Design, organize, and comment your code as you would a typical 
 production project. Be prepared to discuss decisions you made.
 
+```plaintext
 ## Technologies Used
   Frontend: 
       Vue.js CLI
@@ -14,9 +15,10 @@ production project. Be prepared to discuss decisions you made.
   Backend: 
     Node.js >= 20.0
     Express.js
-    Sequelize.js            # ORM 
+    Sequelize.js            # ORM - Database
     Swagger.js              # API documentation
     Jest.js                 # api endpoint test
+```
  
 ## Project Structure
 
