@@ -29,14 +29,14 @@
 				<dd>{{ ringCount(property.parcel_geo) }}</dd>
 			</div>
 			<div>
-				<dt class="text-xs uppercase tracking-wide text-slate-300">Building rings</dt>
+				<dt class="text-xs uppercase tracking-wide text-slate-300 mt-3">Building rings</dt>
 				<dd>{{ ringCount(property.building_geo) }}</dd>
 			</div>
 			<div>
-				<dt class="text-xs uppercase tracking-wide text-slate-300">Google map</dt>
+				<dt class="text-xs uppercase tracking-wide text-slate-300 mt-3">Google map📍</dt>
 				<dd>
 					<a
-						:href="`https://www.google.com/maps/search/?api=1&query=${formatCoord(property.geocode_geo?.coordinates?.[1])},${formatCoord(property.geocode_geo?.coordinates?.[0])}`"
+						:href="`http://www.google.com/maps/place/${formatCoord(property.geocode_geo?.coordinates?.[1])},${formatCoord(property.geocode_geo?.coordinates?.[0])}/@${formatCoord(property.geocode_geo?.coordinates?.[1])},${formatCoord(property.geocode_geo?.coordinates?.[0])},21z/data=!3m1!1e3`"
 						target="_blank"
 						class="text-amber-300 hover:underline"
 					>
