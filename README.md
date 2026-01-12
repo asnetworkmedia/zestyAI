@@ -38,7 +38,7 @@ project-root/
 |               |-- Listing.vue   # Listing page
 |               |-- components/   # Contains components used in Listing.vue
 |           |-- property/         # Contains Property page
-|               |-- Property.vue  # To Show a Property
+|               |-- Property.vue  # Property page
 |               |-- components/   # Contains components used in Property.vue
 |
 |-- api/                          # Backend
