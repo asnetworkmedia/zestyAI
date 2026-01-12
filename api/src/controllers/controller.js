@@ -87,6 +87,7 @@ const controller = {
 	// Overlay polygons onto image
 	withOverlay: async (imageBuffer, options) => {
 		const { parcelGeo, buildingGeo, bounds, parcelColor, buildingColor } = options;
+		// Load image and get dimensions
 		const image = sharp(imageBuffer);
 		const meta = await image.metadata();
 		const width = meta.width || 1024;
