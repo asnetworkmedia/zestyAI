@@ -187,7 +187,7 @@ router.post('/find', controller.findProperties);
  *         name: id
  *         required: true
  *         schema:
- *           type: integer
+ *           type: string
  *         description: The property ID
  *       - in: query
  *         name: overlay
