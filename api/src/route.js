@@ -189,6 +189,21 @@ router.post('/find', controller.findProperties);
  *         schema:
  *           type: integer
  *         description: The property ID
+ *       - in: query
+ *         name: overlay
+ *         schema:
+ *           type: string
+ *         description: Enable overlays
+ *       - in: query
+ *         name: parcel
+ *         schema:
+ *           type: string
+ *         description: Parcel overlay color
+ *       - in: query
+ *         name: building
+ *         schema:
+ *           type: string
+ *         description: Building overlay color
  *     responses:
  *       200:
  *         description: Property display data
