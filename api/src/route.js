@@ -193,16 +193,19 @@ router.post('/find', controller.findProperties);
  *         name: overlay
  *         schema:
  *           type: string
+ *           enum: [yes, no]
  *         description: Enable overlays
  *       - in: query
  *         name: parcel
  *         schema:
  *           type: string
+ *           enum: [orange, blue, red, green]
  *         description: Parcel overlay color
  *       - in: query
  *         name: building
  *         schema:
  *           type: string
+ *           enum: [orange, blue, red, green]
  *         description: Building overlay color
  *     responses:
  *       200:
