@@ -85,6 +85,53 @@ router.get('/properties', controller.getProperties);
  *     responses:
  *       200:
  *         description: Property found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               example: {
+ *                 "id": "<string>",
+ *                 "geocode_geo": {
+ *                   "type": "<string>",
+ *                   "coordinates": [
+ *                     <longitude>,
+ *                     <latitude>
+ *                   ]
+ *                 },
+ *                 "parcel_geo": {
+ *                   "type": "<string>",
+ *                   "coordinates": [
+ *                     [
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>]
+ *                     ]
+ *                   ]
+ *                 },
+ *                 "building_geo": {
+ *                   "type": "<string>",
+ *                   "coordinates": [
+ *                     [
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>],
+ *                       [<longitude>, <latitude>]
+ *                     ]
+ *                   ]
+ *                 },
+ *                 "image_bounds": [
+ *                   <longitude>,
+ *                   <latitude>,
+ *                   <longitude>,
+ *                   <latitude>
+ *                 ],
+ *                 "image_url": "<string>"
+ *               }
  *       404:
  *         description: Property not found
  */
@@ -108,13 +155,20 @@ router.get('/properties/:id', controller.getPropertyById);
  *               "type": "Feature",
  *               "geometry": {
  *                 "type": "Point",
- *                 "coordinates": [-80.0782213, 26.8849731]
+ *                 "coordinates": [<longitude>, <latitude>]
  *               },
- *               "x-distance": 1755000
+ *               "x-distance": <number>
  *             }
  *     responses:
  *       200:
  *         description: Search results
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: string
+ *               example: ["<string>"]
  *       400:
  *         description: Invalid search criteria
  */
